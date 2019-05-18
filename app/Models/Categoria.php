@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Nivel extends Model
+class Categoria extends Model
 {
-    protected $table = 'nivel';
+    protected $table = 'categoria';
 
-    public function obterNiveis() {
+    public function obterCategorias() {
         return \DB::table($this->table)->get();
     }
 }

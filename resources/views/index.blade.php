@@ -15,7 +15,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Rooftop Restaurant</title>
+	<title>Cuscuz Sertanejo</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Roboto:400,500" rel="stylesheet">
 	<!--
@@ -33,7 +33,6 @@
 </head>
 
 <body>
-
 	<!--================ Start Header Area =================-->
 	<header class="header-area">
 		<div class="container">
@@ -45,7 +44,7 @@
 						<a href="contact">Contato</a>
 					</div>
 					<div class="col-3 logo">
-						<a href="index"><img class="mx-auto" src="img/logo.png" alt=""></a>
+						<a href="index"><img style="padding-top:15px;" class="mx-auto" src="img/logo-transparent.jpg" alt=""></a>
 					</div>
 					<nav class="col navbar navbar-expand-md justify-content-end">
 
@@ -59,13 +58,13 @@
 							<ul class="navbar-nav justify-content-center w-100">
 								
 								<li class="nav-item">
-									<a class="nav-link" href="#">Entrar</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Cadastrar</a>
+									<a class="nav-link" href="#">Categorias</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="#">Galeria</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Entrar</a>
 								</li>
 							</ul>
 						</div>
@@ -115,56 +114,48 @@
 				<div class="col-lg-5 col-md-5">
 					<div class="section-title relative">
 						<h1>
-							Daily Food <br>
-							Courses <br>
-							with Drinks
+							original <br>
+							preparo <br>
+							molhos
 						</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-							magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat.</p>
-						<a href="#" class="primary-btn text-uppercase">See Full Menu</a>
+						<p>vem de uma receita continuando vem de uma receita continuando
+						vem de uma receita continuando vem de uma receita continuando vem de uma receita continuando
+						vem de uma receita continuando vem de uma receita continuando vem de uma receita continuando.</p>
+						<a href="#" class="primary-btn text-uppercase">Cardápio Completo</a>
 					</div>
 				</div>
 				<div class="col-lg-7 col-md-7">
 					<div class="menu-list">
 						<div class="single-menu">
-							<h3>Appetizer</h3>
+							<h3>Em Alta</h3>
 							<ul class="list">
 								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
+									<p class="menu-item">Cuscuz Especial ........... <span>$25.00</span></p>
+									<p>(Flocos de milho, molho marítimo, camarão, siri catado e polvo)</p>
 								</li>
 								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
+									<p class="menu-item">Cuscuz Lombo Defumado ........... <span>$25.00</span></p>
+									<p>(Flocos de milho, molho de ervas e lombo defumado)</p>
 								</li>
 							</ul>
 						</div>
 
 						<div class="single-menu">
-							<h3>Main Courses</h3>
+							<h3>Carro Chefe</h3>
 							<ul class="list">
 								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
-								</li>
-								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
+									<p class="menu-item">Cuscuz Sertanejo ........... <span>$25.00</span></p>
+									<p>(Flocos de milho, molho nordestino, carne seca, queijo coalho e banana da terra)</p>
 								</li>
 							</ul>
 						</div>
 
 						<div class="single-menu">
-							<h3>Drinks & Juices</h3>
+							<h3>Temos os Fitness!</h3>
 							<ul class="list">
 								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
-								</li>
-								<li>
-									<p class="menu-item">Ham & Potato Sandwiches ........... <span>$25.00</span></p>
-									<p>(French bread baguette, cooked ham, potato salad)</p>
+									<p class="menu-item">Original Fitness ........... <span>$25.00</span></p>
+									<p>(Flocos de milho, flocos de aveia, molho de tomate, ricota, atum e banana da terra)</p>
 								</li>
 							</ul>
 						</div>
@@ -235,103 +226,7 @@
 		</div>
 	</section>
 	<!--================ End Gallery Area =================-->
-
-	<!--================ Reservation Area =================-->
-	<section class="reservation-area">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-7 col-md-6">
-					<form class="booking-form" id="myForm" action="">
-						<div class="row">
-							<div class="col-lg-12 d-flex flex-column mb-20">
-								<input name="event-name" placeholder="Event Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Event Name'"
-								 class="form-control" required="" type="text">
-							</div>
-
-							<div class="input-group col-lg-6 mb-20">
-								<input id="event_date" class="form-control datepicker" placeholder="Event Date" onfocus="this.placeholder = ''"
-								 onblur="this.placeholder = 'Event Date'" class="form-control" required="" type="text">
-								<span class="input-group-append">
-									<button class="btn btn-outline-secondary border-left-0 border-0" type="button">
-										<i class="fa fa-calendar reservation-calendar"></i>
-									</button>
-								</span>
-							</div>
-
-							<div class="col-lg-6 d-flex flex-column mb-20">
-								<div class="nice-select app-select form-control " tabindex="0">
-									<span class="current">Event Time</span>
-									<ul class="list">
-										<li data-value="Project you want to donate" data-display="Project you want to donate" class="option selected">Meal
-											Preferences</li>
-										<li data-value="1" class="option">05pm</li>
-										<li data-value="2" class="option">08pm</li>
-										<li data-value="3" class="option">09pm</li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="col-lg-6 d-flex flex-column mb-20">
-								<div class="nice-select app-select form-control " tabindex="0">
-									<span class="current">Number of guests</span>
-									<ul class="list">
-										<li data-value="Project you want to donate" data-display="Project you want to donate" class="option selected">Number
-											of guests</li>
-										<li data-value="1" class="option">Number of guests 1</li>
-										<li data-value="2" class="option">Number of guests 2</li>
-										<li data-value="3" class="option">Number of guests 3</li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-lg-6 d-flex flex-column mb-20">
-								<input name="budget" placeholder="Budget" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Budget'"
-								 class="form-control" required="" type="text">
-							</div>
-							<div class="col-lg-12 d-flex flex-column mb-20">
-								<input name="contact-name" placeholder="Contact Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact Name'"
-								 class="form-control" required="" type="text">
-							</div>
-							<div class="col-lg-12 d-flex flex-column mb-20">
-								<input name="email-address" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'"
-								 class="form-control" required="" type="email">
-							</div>
-							<div class="col-lg-12 d-flex flex-column mb-20">
-								<input name="phone-number" placeholder="Phone Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'"
-								 class="form-control" required="" type="text">
-							</div>
-							<div class="col-lg-12 d-flex flex-column">
-								<textarea class="form-control" name="post-message" placeholder="Post a message" onfocus="this.placeholder = ''"
-								 onblur="this.placeholder = 'Post a message'" required=""></textarea>
-							</div>
-
-							<div class="col-lg-12 d-flex justify-content-end">
-								<button class="primary-btn dark mt-30 text-uppercase">Send Request</button>
-							</div>
-							<div class="alert-msg"></div>
-						</div>
-					</form>
-				</div>
-				<div class="offset-lg-1 col-lg-4 col-md-6">
-					<div class="section-title relative">
-						<h1>
-							Book a <br>
-							Table or <br>
-							Rooms for <br>
-							private <br>
-							dining
-						</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-							magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--================End Reservation Area =================-->
-
+	
 	<!--================ Chefs Quotes Area =================-->
 	<section class="chefs-quotes-area">
 		<div class="container">
@@ -351,7 +246,7 @@
 						<img src="img/signature.png" class="img-fluid" alt="">
 					</div>
 				</div>
-				<div class="offset-lg-1 col-lg-6 col-md-6">
+				<div class="offset-lg-1 col-lg-6 col-md-6" style="margin-top:50px;">
 					<div class="mt--120">
 						<img class="chef-img img-fluid" src="img/chefs-quotes.jpg" alt="">
 					</div>

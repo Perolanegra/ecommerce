@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Nivel as NivelRepository;
+use App\Models\Categoria as CategoriaRepository;
 
 class AppController extends Controller
 {
-    private $nivel_acesso;
+    private $categorias;
 
-    public function __construct(NivelRepository $NivelRepositorio) {
-        $this->nivel_acesso = $NivelRepositorio->obterNiveis();
+    public function __construct(CategoriaRepository $CategoriaRepositorio) {
+        $this->categorias = $CategoriaRepositorio->obterCategorias();
     }
 
     public function index() {
-        dd($this->nivel_acesso);
-        return view('index', ['nivel_acesso' => $this->nivel_acesso]);
+        $categorias = $this->categorias;
+        return view('index')->with(compact('categorias'));
     }
 }

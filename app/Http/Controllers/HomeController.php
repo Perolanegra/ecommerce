@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categoria as CategoriaRepository;
+use App\Models as Repository;
 
 class HomeController extends Controller
 {
-    private $categorias;
+    private $categoriaRepositorio;
 
-    public function __construct(CategoriaRepository $CategoriaRepositorio) {
-        $this->categorias = $CategoriaRepositorio->obterCategorias();
+    public function __construct() {
+        $this->categoriaRepositorio = new Repository\Categoria;
     }
 
     public function index() {
-        $categorias = $this->categorias;
+        $categorias = $this->categoriaRepositorio->obterCategorias();
         return view('index/index')->with(compact('categorias'));
     }
 }

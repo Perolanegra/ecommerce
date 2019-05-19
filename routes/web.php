@@ -18,3 +18,4 @@ Route::view('/categories', 'categorias/categorias');
 Route::view('/gallery', 'galeria/galeria');
 Route::view('/listaProduto', 'components/listaProduto');
 Route::get('/produtos', 'ProdutoController@index');
+Route::get('/produtos/store', 'ProdutoController@storeProduto');

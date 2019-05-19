@@ -11,11 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', 'AppController@index');
-// Route::view('/', 'index');
+Route::get('/', 'HomeController@index');
 Route::view('/about', 'sobre/sobre');
 Route::view('/contact', 'contato/contato');
 Route::view('/categories', 'categorias/categorias');

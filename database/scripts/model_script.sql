@@ -47,7 +47,7 @@ data_deletado timestamp
 create table if not exists Produto (
 id int(11) auto_increment not null primary key unique,
 id_categoria int(11) not null,
-valor float(5,2) not null,
+id_valor int(11) not null,
 nome varchar(100) not null,
 foto varchar(75),
 data_cadastro timestamp default now() not null,

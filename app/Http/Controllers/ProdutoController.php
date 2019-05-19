@@ -13,11 +13,13 @@ class ProdutoController extends Controller
         $this->produtos = $ProdutoRepositorio->obterProdutos();
     }
 
-    private function index() {
-        // dd($this->produtos);
+    public function index() {
+        dd($this->produtos);
+        $produtos = $this->produtos;
+        return view('produtos/produtos')->with(compact('produtos'));
     }
 
-    private function store(Request $request) {
+    public function store(Request $request) {
         $params = [
             ''
         ];

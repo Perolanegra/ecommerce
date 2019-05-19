@@ -8,7 +8,7 @@ class Produto extends Model
 {
     protected $table = 'produto';
     
-    private function obterProdutos() {
+    public function obterProdutos() {
         return \DB::table($this->table)->get();
     }
 }

@@ -24,7 +24,6 @@
 	<!--================ Start Header Area =================-->
 	@include('components.cabecalho')
 	<!--================ End Header Area =================-->
-
 	<!--================ Start banner Area =================-->
 	<section class="home-banner-area relative">
 		<div class="container">

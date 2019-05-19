@@ -48,6 +48,7 @@ create table if not exists Produto (
 id int(11) auto_increment not null primary key unique,
 id_categoria int(11) not null,
 nome varchar(100) not null,
+descricao varchar(500) not null,
 foto varchar(75),
 data_cadastro timestamp default now() not null,
 data_atualizado timestamp,
@@ -96,9 +97,9 @@ data_deletado timestamp
 create table if not exists Preco_Produto (
 id int(11) auto_increment not null primary key unique,
 id_produto int(11) not null,
-valor_pequeno float(2,2) not null,
-valor_medio float(2,2) not null,
-valor_grande float(2,2) not null,
+valor_pequeno float(50,2) not null,
+valor_medio float(50,2) not null,
+valor_grande float(50,2) not null,
 data_cadastro timestamp default now() not null,
 data_atualizado timestamp,
 data_deletado timestamp

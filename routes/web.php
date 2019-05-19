@@ -20,3 +20,4 @@ Route::view('/about', 'sobre/sobre');
 Route::view('/contact', 'contato/contato');
 Route::view('/categories', 'categorias/categorias');
 Route::view('/gallery', 'galeria/galeria');
+Route::view('/loja', 'components/loja');

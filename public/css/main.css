@@ -1781,7 +1781,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo {
   text-align: center; }
   .logo img {
-    width: 27%; }
+    width: 30%; }
     @media (max-width: 767px) {
       .logo img {
         width: 16%; } }

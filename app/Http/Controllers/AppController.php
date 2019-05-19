@@ -15,6 +15,6 @@ class AppController extends Controller
 
     public function index() {
         $categorias = $this->categorias;
-        return view('index')->with(compact('categorias'));
+        return view('index/index')->with(compact('categorias'));
     }
 }

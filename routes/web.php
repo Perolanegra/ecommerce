@@ -16,5 +16,7 @@
 // });
 Route::get('/', 'AppController@index');
 // Route::view('/', 'index');
-Route::view('/about', 'sobre');
-Route::view('/contact', 'contato');
+Route::view('/about', 'sobre/sobre');
+Route::view('/contact', 'contato/contato');
+Route::view('/categories', 'categorias/categorias');
+Route::view('/gallery', 'galeria/galeria');

@@ -83,3 +83,13 @@ data_atualizado timestamp,
 data_deletado timestamp
 );
 
+create table if not exists Voucher (
+id int(11) auto_increment not null primary key unique,
+id_usuario int(11) not null,
+cupom int(11) not null,
+percentual_desconto int(3) not null,
+data_cadastro timestamp default now() not null,
+data_atualizado timestamp,
+data_deletado timestamp
+);
+

@@ -17,5 +17,8 @@ Route::view('/contact', 'contato/contato');
 Route::view('/categories', 'categorias/categorias');
 Route::view('/gallery', 'galeria/galeria');
 Route::view('/listaProduto', 'components/listaProduto');
-Route::get('/produtos', 'ProdutoController@index');
 Route::get('/produtos/store', 'ProdutoController@storeProduto');
+Auth::routes();
+
+Route::get('/produtos', 'ProdutoController@index')->middleware('auth');
+Route::view('/verification', 'auth/verify')->middleware('auth');

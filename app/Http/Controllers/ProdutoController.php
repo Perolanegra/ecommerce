@@ -10,12 +10,13 @@ class ProdutoController extends Controller
     protected $produtoRepositorio;
 
     public function __construct() {
+        $this->middleware('auth');
         $this->produtoRepositorio = new Repository\Produto;
     }
 
     public function index() {
         $produtos = $this->produtoRepositorio->obterProdutos();
-        return view('produtos/produtos')->with(compact('produtos'));
+        return view('home')->with(compact('produtos'));
     }
 
     /**

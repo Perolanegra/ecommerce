@@ -28,7 +28,7 @@
 									<a class="nav-link" href="gallery">Galeria</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Entrar</a>
+									<a class="nav-link" href="{{url('produtos')}}">Entrar</a>
 								</li>
 							</ul>
 						</div>

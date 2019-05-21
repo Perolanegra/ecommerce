@@ -20,6 +20,7 @@
 	@include('components.carregaCss')
 </head>
 <body>
+	{{-- {{dd($produtos)}} --}}
 	<!--================ Start Header Area =================-->
 	@include('components.cabecalho')
 	<!--================ End Header Area =================-->

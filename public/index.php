@@ -58,3 +58,40 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
+
+#Session Starts
+// session_start();
+
+// $client_id = '0oam4leh2yhQcgO6q356';
+// $client_secret = 'zR-dLFu6wjK1SArCFk0_tPw7HpLlulcKpgBTL4Ce';
+// $redirect_uri = 'http://localhost:8000/';
+
+
+// $metadata_url = 'https://dev-126999.okta.com/oauth2/default/.well-known/oauth-authorization-server';
+
+// // Fetch the authorization server metadata which contains a few URLs
+// // that we need later, such as the authorization and token endpoints
+// $metadata = http($metadata_url);
+
+// function http($url, $params=false) {
+//     $ch = curl_init($url);
+//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//     if($params)
+//       curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+//     return json_decode(curl_exec($ch));
+//   }
+
+// // If there is a username, they are logged in, and we'll show the logged-in view
+// if(isset($_SESSION['username'])) {
+//   echo '<p>Logged in as</p>';
+//   echo '<p>' . $_SESSION['username'] . '</p>';
+//   echo '<p><a href="/?logout">Log Out</a></p>';
+//   die();
+// }
+
+// // If there is no username, they are logged out, so show them the login link
+// if(!isset($_SESSION['username'])) {
+//   $authorize_url = 'TODO';
+//   echo '<p>Not logged in</p>';
+//   echo '<p><a href="'.$authorize_url.'">Log In</a></p>';
+// }

@@ -23,17 +23,18 @@ data_atualizado timestamp,
 data_deletado timestamp
 );
 
-create table if not exists Usuario (
-id int(11) auto_increment not null primary key unique,
-id_nivel int(11) not null,
-nome varchar(200) not null,
-CPF varchar(11) not null unique,
-telefone varchar(14) not null unique,
-email varchar(150) unique,
-data_cadastro timestamp default now() not null,
-data_atualizado timestamp,
-data_deletado timestamp
-);
+#create table if not exists Usuario (
+#id int(11) auto_increment not null primary key unique,
+#id_credencial int(11) not null unique,
+#id_nivel int(11) not null,
+#nome varchar(200) not null,
+#CPF varchar(11) not null unique,
+#telefone varchar(14) not null unique,
+#email varchar(150) unique,
+#data_cadastro timestamp default now() not null,
+#data_atualizado timestamp,
+#data_deletado timestamp
+#);
 
 create table if not exists Categoria_Produto (
 id int(11) auto_increment not null primary key unique,
@@ -64,15 +65,15 @@ data_atualizado timestamp,
 data_deletado timestamp
 );
 
-create table if not exists Credencial (
-id int(11) auto_increment not null primary key unique,
-id_usuario int(11) not null,
-CPF_login varchar(11) not null unique,
-senha varchar(250) unique,
-data_cadastro timestamp default now() not null,
-data_atualizado timestamp,
-data_deletado timestamp
-);
+#create table if not exists Credencial (
+#id int(11) auto_increment not null primary key unique,
+#id_usuario int(11) not null,
+#CPF_login varchar(11) not null unique,
+#senha varchar(250) unique,
+#data_cadastro timestamp default now() not null,
+#data_atualizado timestamp,
+#data_deletado timestamp
+#);
 
 create table if not exists Nivel (
 id int(11) auto_increment not null primary key unique,

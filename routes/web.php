@@ -19,7 +19,5 @@ Route::get('/produtos/store', 'ProdutoController@storeProduto');
 
 
 Route::middleware(['auth'])->group(function () { 
-
     Route::get('/produtos', 'ProdutoController@index')->name('entrar');
-    
 });

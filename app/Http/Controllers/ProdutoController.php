@@ -8,14 +8,16 @@ use App\Models as Repository;
 class ProdutoController extends Controller
 {
     protected $produtoRepositorio;
+    protected $precoProdutoRepositorio;
 
     public function __construct() {
         $this->middleware('auth');
         $this->produtoRepositorio = new Repository\Produto;
+        $this->precoProdutoRepositorio = new Repository\PrecoProduto;
     }
 
     public function index() {
-        $produtos = $this->produtoRepositorio->obterProdutos();
+        $produtos = $this->produtoRepositorio->getAll();
         return view('home')->with(compact('produtos'));
     }
 
@@ -28,26 +30,42 @@ class ProdutoController extends Controller
      * 
      */
     public function storeProduto(Request $request) {
+
+        request()->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('images'), $imageName);
+
         $params = [
             'id_categoria' => $request->get('id'),
             'nome' => $request->get('nome'),
             'descricao' => $request->get('descricao'),
-            'foto' => $request->get('foto')
+            'foto' => $imageName
         ];
 
-        $objetoProduto = $request->all();
-        dd($objetoProduto);
-        // insert into Produto values(null, 1, 'Cuscuz Fitness', 'Contém flocos de milho, flocos de aveia, molho de tomate, ricota, atum e banana da terra.', 'fitness.jpg', now(), null, null);
-        // insert into preco_produto values (null, 20, 8.00, 16.00, 32.00, now(), null, null);
+        try {
+            $response = $this->produtoRepositorio->store($params);
+            dd($response);
+            if($response) {
+                $paramsPreco = [
+                    'id_produto' => $response,
+                    'valor_pequeno' => $request->get('valor_pequeno'),
+                    'valor_medio' => $request->get('valor_medio'),
+                    'valor_grande' => $request->get('valor_grande')
+                ];
 
-        // id int(11) auto_increment not null primary key unique,
-        // id_categoria int(11) not null,
-        // nome varchar(100) not null,
-        // descricao varchar(500) not null,
-        // foto varchar(75),
-        // data_cadastro timestamp default now() not null,
-        // data_atualizado timestamp,
-        // data_deletado timestamp
+                $responsePreco = $this->precoProdutoRepositorio->store($paramsPreco);
+                if($responsePreco) {
+                    session()->flash('success', 'Produto inserido com sucesso!');
+                    return view('index')->with(compact('responsePreco'));
+                }
+            }
+            return view('index');
+        } catch (\Throwable $error) {
+            throw new \Exception("Erro ao processar requisição", $error);
+        }
     }
 
     // $to_name = 'TO_NAME';

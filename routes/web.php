@@ -15,9 +15,9 @@ Route::view('/contact', 'contato/contato');
 Route::view('/categories', 'categorias/categorias');
 Route::view('/gallery', 'galeria/galeria');
 Route::view('/listaProduto', 'components/listaProduto');
-Route::get('/produtos/store', 'ProdutoController@storeProduto');
-
 
 Route::middleware(['auth'])->group(function () { 
     Route::get('/produtos', 'ProdutoController@index')->name('entrar');
+    Route::post('/produtos/store', 'ProdutoController@storeProduto')->name('produto.store');
+    Route::view('/cadProduto', 'produtos/cadProduto/cadProduto')->name('cadastrar.produto');
 });

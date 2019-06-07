@@ -4,14 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Produto extends Model
+class PrecoProduto extends Model
 {
-    protected $table = 'produto';
+    protected $table = 'preco_produto';
     
-    public function getAll() {
-        return \DB::table($this->table)->get();
-    }
-
     public function store($params) {
         return \DB::table($this->table)->insertGetId($params);
     }

@@ -47,7 +47,6 @@ class ProdutoController extends Controller
 
         try {
             $response = $this->produtoRepositorio->store($params);
-            dd($response);
             if($response) {
                 $paramsPreco = [
                     'id_produto' => $response,
@@ -59,13 +58,15 @@ class ProdutoController extends Controller
                 $responsePreco = $this->precoProdutoRepositorio->store($paramsPreco);
                 if($responsePreco) {
                     session()->flash('success', 'Produto inserido com sucesso!');
-                    return view('index')->with(compact('responsePreco'));
+                    return redirect()->action('HomeController@index');
                 }
             }
-            return view('index');
-        } catch (\Throwable $error) {
-            throw new \Exception("Erro ao processar requisição", $error);
+            return redirect()->action('HomeController@index');
+        } catch (\Throwable $th) {
+            throw new Exception("Erro de Requisição", 1);
+            return redirect()->action('HomeController@index');
         }
+        
     }
 
     // $to_name = 'TO_NAME';

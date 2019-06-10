@@ -13,6 +13,7 @@ class Produto extends Model
     }
 
     public function store($params) {
+        $params['id_categoria'] = 1;
         return \DB::table($this->table)->insertGetId($params);
     }
 }

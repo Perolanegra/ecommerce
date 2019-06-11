@@ -34,11 +34,11 @@
           @foreach(@$produtos->take(3) as $key => $item)
           <div class="col-sm-6 col-lg-4 mb-5">
             <!-- Shop Item -->
-            <a class="d-block card card-text-dark border-0 text-center transition-3d-hover" href="single-product.html">
+            <a class="d-block card card-text-dark border-0 text-center transition-3d-hover" href={{route('produto.detalhe', ['item' => $item])}}>
               {{-- @if(strlen($item->foto))
                 <img class="img-fluid rounded" src="{{$restUrl.'/'.$item->foto}}" alt="Image Description">
               @endif --}}
-              <img class="img-fluid rounded" src="../../assets/img/500x550/img8.jpg" alt="Image Description">
+              <img class="img-fluid rounded" src="/assets/img/{{$item->foto}}" alt="Image Description">
               <div class="card-body pt-4 px-4">
                 <h2 class="h5 mb-1">{{$item->nome}}</h2>
                 <span class="d-block">{{$item->descricao}}</span>

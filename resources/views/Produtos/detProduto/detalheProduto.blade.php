@@ -37,13 +37,13 @@
                  data-arrow-right-classes="fas fa-arrow-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right"
                  data-pagi-classes="text-center u-slick__pagination u-slick__pagination--white mt-7 mb-0">
               <div class="js-slide px-7 my-4">
-                <img class="img-fluid" src="/assets/img/mockups/img6.png" alt="Image Description">
+                <img class="img-fluid" src="/assets/img/{{$item['foto']}}" alt="Image Description">
               </div>
               <div class="js-slide px-7 my-4">
-                <img class="img-fluid" src="/assets/img/mockups/img7.png" alt="Image Description">
+                <img class="img-fluid" src="/assets/img/{{$item['foto']}}" alt="Image Description">
               </div>
               <div class="js-slide px-7 my-4">
-                <img class="img-fluid" src="/assets/img/mockups/img1.png" alt="Image Description">
+                <img class="img-fluid" src="/assets/img/{{$item['foto']}}" alt="Image Description">
               </div>
             </div>
           </div>

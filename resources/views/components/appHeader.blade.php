@@ -6,32 +6,7 @@
             <div class="d-flex align-items-center">
             
               <div class="ml-auto">
-                <!-- Jump To -->
-                {{-- @guest
-                  <div class="d-inline-block d-sm-none position-relative mr-2">
-                    <div id="jumpToDropdown" class="dropdown-menu dropdown-unfold" aria-labelledby="jumpToDropdownInvoker">
-                    <a class="dropdown-item" href="{{route('entrar')}}">Entrar</a>
-                    @if (Route::has('register'))
-                      <a class="dropdown-item" href="{{route('register')}}">Registrar</a>
-                    @endif
-                    </div>
-                  </div>
-                @else
-                  <div class="d-inline-block d-sm-none position-relative mr-2">
-                    <div class="dropdown-menu dropdown-unfold" aria-labelledby="jumpToDropdownInvoker">
-                      <a class="dropdown-item" >Olá, {{ Auth::user()->name }}</a>
-                      <a href="{{ route('logout') }}"
-                      onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">
-                      {{ __('Sair') }}
-                      </a>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          @csrf
-                      </form>
-                    </div>
-                  </div>
-                @endguest --}}
-    
+
                 @guest
                 <div class="d-none d-sm-inline-block ml-sm-auto">
                   <ul class="list-inline mb-0">
@@ -111,7 +86,7 @@
     
                   <!-- Blog -->
                   <li class="nav-item u-header__nav-item">
-                        <a class="nav-link u-header__nav-link" href="#">Blog</a>
+                        <a class="nav-link u-header__nav-link" href="/categories">Categorias</a>
                   </li>
                   <!-- End Blog -->
     

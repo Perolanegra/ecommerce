@@ -1,81 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirme a senha') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Registrar') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -249,6 +171,7 @@
           <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-3 space-lg-0">
             <!-- Form -->
             <form class="js-validate mt-5" method="POST" action="{{ route('register') }}">
+              @csrf
               <!-- Title -->
               <div class="mb-7">
                 <h1 class="h3 text-primary font-weight-normal mb-0">Bem vindo <span class="font-weight-semi-bold">amante de Cuscuz!</span></h1>
@@ -276,12 +199,9 @@
               <div class="js-form-message form-group">
                 <label class="form-label" for="email">Email</label>
                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" 
-                        id="email" placeholder="Email" 
-                        aria-label="Digite seu email." required
-                       data-msg="Por Favor insira um endereço de email válido"
+                       value="{{ old('email') }}" id="email" placeholder="Email" aria-label="Digite seu email." required autocomplete="email"
+                       data-msg="Por Favor insira um endereço de email válido."
                        data-error-class="u-has-error"
-                       value="{{ old('email') }}" 
-                       required autocomplete="email"
                        data-success-class="u-has-success">
                 @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -290,15 +210,13 @@
                 @enderror
               </div>
               <!-- End Form Group -->
-
               <!-- Form Group -->
               <div class="js-form-message form-group">
                 <label class="form-label" for="password">Senha</label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror" 
-                        name="password" id="password" placeholder="********" aria-label="Digite uma senha" required
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
+                       name="password" placeholder="********" aria-label="Digite uma senha" required autocomplete="new-password"
                        data-msg="Digite uma senha de pelo menos 8 caracteres."
                        data-error-class="u-has-error"
-                       required autocomplete="new-password"
                        data-success-class="u-has-success">
                 @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -310,38 +228,19 @@
 
               <!-- Form Group -->
               <div class="js-form-message form-group">
-                <label class="password-confirm" for="password-confirm">Insira a senha novamente</label>
-                <input type="password" class="form-control" name="password-confirm" 
-                       id="password-confirm" placeholder="********" aria-label="Digite a senha novamente"
-                       required autocomplete="new-password"
-                       data-msg="As senhas inseridas não coincidem."
+                <label class="form-label" for="password-confirm">Confirme a senha</label>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" 
+                       placeholder="********" aria-label="Digite a senha novamente" required autocomplete="new-password"
+                       data-msg="Campo obrigatório."
                        data-error-class="u-has-error"
                        data-success-class="u-has-success">
               </div>
               <!-- End Form Group -->
-
-              <!-- Checkbox -->
-              {{-- <div class="js-form-message mb-5">
-                <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
-                  <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="termsCheckbox" required
-                         data-msg="Please accept our Terms and Conditions."
-                         data-error-class="u-has-error"
-                         data-success-class="u-has-success">
-                  <label class="custom-control-label" for="termsCheckbox">
-                    <small>
-                      I agree to the
-                      <a class="link-muted" href="../pages/terms.html">Terms and Conditions</a>
-                    </small>
-                  </label>
-                </div>
-              </div> --}}
-              <!-- End Checkbox -->
-
               <!-- Button -->
               <div class="row align-items-center mb-5">
                 <div class="col-5 col-sm-6">
                   <span class="small text-muted">Já tem uma conta?</span>
-                  <a class="small" href="{{ route('entrar') }}">Entrar</a>
+                  <a class="small" href="{{ route('authenticate') }}">Entrar</a>
                 </div>
 
                 <div class="col-7 col-sm-6 text-right">

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Não encontramos esse endereço de email na plataforma.',
+    'failed' => 'Email ou senha inválidos.',
     'throttle' => 'Muitas tentativas, por favor, tente novamente mais tarde.',
 
 ];

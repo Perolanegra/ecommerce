@@ -27,7 +27,7 @@
 									<a class="nav-link" href="{{route('carrinho.listar')}}">Carrinho</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{route('entrar')}}">Entrar</a>
+									<a class="nav-link" href="{{route('authenticate')}}">Entrar</a>
 								</li>
 							</ul>
 						</div>

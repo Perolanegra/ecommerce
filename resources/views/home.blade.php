@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('index.classic')
 
 @section('content')
 @if ($message = Session::get('success'))
@@ -13,8 +13,13 @@
 {{-- <img src="images/{{ Session::get('image') }}"> --}}
 @endif
 
+<ul class="navbar-nav ml-auto">
+        <!-- Authentication Links -->
+        
+    </ul>
+
 <div>
-    <a href="{{route('cadastrar.produto')}}">ok entao</a>
+    {{-- <a href="{{route('cadastrar.produto')}}">ok entao</a> --}}
 </div>
 
 @endsection

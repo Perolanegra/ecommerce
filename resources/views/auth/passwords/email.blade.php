@@ -204,7 +204,7 @@
               <!-- Button -->
               <div class="row align-items-center mb-5">
                 <div class="col-4 col-sm-6">
-                  <a class="small link-muted" href="{{route('entrar')}}">Voltar para Login</a>
+                  <a class="small link-muted" href="{{route('authenticate')}}">Voltar para Login</a>
                 </div>
 
                 <div class="col-8 col-sm-6 text-right">

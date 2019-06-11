@@ -11,4 +11,8 @@ class PrecoProduto extends Model
     public function store($params) {
         return \DB::table($this->table)->insertGetId($params);
     }
+
+    public function getWithId($id) {
+        return \DB::table($this->table)->whereIn('id', [$id])->get();
+    }
 }

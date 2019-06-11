@@ -4,30 +4,68 @@
           <!-- Topbar -->
           <div class="container u-header__hide-content pt-2">
             <div class="d-flex align-items-center">
-    
+            
               <div class="ml-auto">
                 <!-- Jump To -->
-                <div class="d-inline-block d-sm-none position-relative mr-2">
-    
-                  <div id="jumpToDropdown" class="dropdown-menu dropdown-unfold" aria-labelledby="jumpToDropdownInvoker">
-                  <a class="dropdown-item" href="{{route('entrar')}}">Entrar</a>
-                    <a class="dropdown-item" href="{{route('register')}}">Registrar</a>
+                {{-- @guest
+                  <div class="d-inline-block d-sm-none position-relative mr-2">
+                    <div id="jumpToDropdown" class="dropdown-menu dropdown-unfold" aria-labelledby="jumpToDropdownInvoker">
+                    <a class="dropdown-item" href="{{route('entrar')}}">Entrar</a>
+                    @if (Route::has('register'))
+                      <a class="dropdown-item" href="{{route('register')}}">Registrar</a>
+                    @endif
+                    </div>
                   </div>
-                </div>
-                <!-- End Jump To -->
+                @else
+                  <div class="d-inline-block d-sm-none position-relative mr-2">
+                    <div class="dropdown-menu dropdown-unfold" aria-labelledby="jumpToDropdownInvoker">
+                      <a class="dropdown-item" >Olá, {{ Auth::user()->name }}</a>
+                      <a href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                      {{ __('Sair') }}
+                      </a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                    </div>
+                  </div>
+                @endguest --}}
     
-                <!-- Links -->
+                @guest
                 <div class="d-none d-sm-inline-block ml-sm-auto">
                   <ul class="list-inline mb-0">
                     <li class="list-inline-item mr-0">
-                      <a class="u-header__navbar-link" href="{{route('entrar')}}">Entrar</a>
+                      <a class="u-header__navbar-link" href="{{route('authenticate')}}">Entrar</a>
                     </li>
-                    <li class="list-inline-item mr-0">
-                      <a class="u-header__navbar-link" href="{{route('register')}}">Registrar</a>
-                    </li>
+                    @if (Route::has('register'))
+                      <li class="list-inline-item mr-0">
+                        <a class="u-header__navbar-link" href="{{route('register')}}">Registrar</a>
+                      </li>
+                    @endif
                   </ul>
                 </div>
-                <!-- End Links -->
+                @else
+                <div class="d-none d-sm-inline-block ml-sm-auto">
+                    <ul class="list-inline mb-0">
+                      <li class="list-inline-item mr-0">
+                        <a class="u-header__navbar-link" >Olá, {{ Auth::user()->nome }}</a>
+                      </li>
+                        <li class="list-inline-item mr-0">
+                          <a class="u-header__navbar-link" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                          {{ __('Sair') }}
+                          </a>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                          </form>
+                        </li>
+                    </ul>
+                  </div>
+                @endguest
+
+
               </div>
             </div>
           </div>

@@ -17,8 +17,8 @@ class ProdutoController extends Controller
     }
 
     public function index() {
-        // $produtos = $this->produtoRepositorio->getAll();
-        return view('produtos.produtos');
+        $produtos = $this->produtoRepositorio->getAll();
+        return view('produtos.index', compact('produtos'));
     }
     /**
      *
@@ -68,11 +68,22 @@ class ProdutoController extends Controller
         
     }
 
-    public function listar() {
-        
-        $produtos = $this->produtoRepositorio->getAll();
+    public function findProduct(Request $request) {
+        $query = $this->produtoRepositorio->getAll();
+        $searchName = $request->get('q');
 
+        $searchResult = $query->filter(function ($item) use ($searchName) {
+            return false !== stristr($item->nome, $searchName);
+        });
+       
+        $produtos = $searchResult;
         return view('produtos.index', compact('produtos'));
+    }
+
+    public function show(Request $request) {
+        $item = $request->get('item');
+        $precos = $this->precoProdutoRepositorio->getWithId($item['id']);
+        return view('produtos.detProduto.detalheProduto', compact('item', 'precos'));
     }
 
     // $to_name = 'TO_NAME';

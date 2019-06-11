@@ -20,12 +20,11 @@
 						<!-- Navbar links -->
 						<div class="collapse navbar-collapse menu-right" id="collapsibleNavbar">
 							<ul class="navbar-nav justify-content-center w-100">
-								
 								<li class="nav-item">
-									<a class="nav-link" href="categories">Categorias</a>
+									<a class="nav-link" href="{{route('produto.listar')}}">Produtos</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="gallery">Galeria</a>
+									<a class="nav-link" href="{{route('carrinho.listar')}}">Carrinho</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="{{route('entrar')}}">Entrar</a>

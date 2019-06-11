@@ -11,16 +11,15 @@ class ProdutoController extends Controller
     protected $precoProdutoRepositorio;
 
     public function __construct() {
-        $this->middleware('auth');
+        // $this->middleware('auth');
         $this->produtoRepositorio = new Repository\Produto;
         $this->precoProdutoRepositorio = new Repository\PrecoProduto;
     }
 
     public function index() {
-        $produtos = $this->produtoRepositorio->getAll();
-        return view('home')->with(compact('produtos'));
+        // $produtos = $this->produtoRepositorio->getAll();
+        return view('produtos.produtos');
     }
-
     /**
      *
      * Insere um produto na Entidade Produto. (PERFIL PROPRIETÁRIO)
@@ -67,6 +66,13 @@ class ProdutoController extends Controller
             return redirect()->action('HomeController@index');
         }
         
+    }
+
+    public function listar() {
+        
+        $produtos = $this->produtoRepositorio->getAll();
+
+        return view('produtos.index', compact('produtos'));
     }
 
     // $to_name = 'TO_NAME';

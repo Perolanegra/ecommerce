@@ -7,6 +7,16 @@
             
               <div class="ml-auto">
 
+                  @if(@Auth::user()->id_nivel == 1)
+                  <div class="d-none d-sm-inline-block ml-sm-auto">
+                      <ul class="list-inline mb-0">
+                        <li class="list-inline-item mr-0">
+                          <a class="u-header__navbar-link" href="{{route('cadastrar.produto')}}">Cadastrar Produtos</a>
+                        </li>
+                      </ul>
+                  </div>
+                  @endif
+
                 @guest
                 <div class="d-none d-sm-inline-block ml-sm-auto">
                   <ul class="list-inline mb-0">
@@ -40,7 +50,7 @@
                   </div>
                 @endguest
 
-
+               
               </div>
             </div>
           </div>

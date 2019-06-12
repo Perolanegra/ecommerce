@@ -1,10 +1,11 @@
 @extends('index.classic')
 
+@include('components.carregaCssPadrao')
 @section('content')
-
+  @include('components.alert-cart-item-remove')
 
   <!-- Cart Section -->
-  <div class="bg-light">
+  <div id="doc" class="bg-light">
     <div class="container space-2">
       <!-- Title -->
       <div class="mb-6">
@@ -28,7 +29,7 @@
             <tbody>
               <!-- Item Content -->
               @foreach ($produtos as $item)
-              <tr>
+            <tr id="{{@$item['id_row']}}">
                 <td>
                   <div class="media align-items-center">
                     <div class="u-avatar mr-3">
@@ -53,14 +54,13 @@
                 </td>
                 <td class="align-middle">{{@$item['preco']}}</td>
                 <td class="align-middle text-center">
-                  <button type="button" class="close float-none">
+                  <button onclick="destroyRow({{json_encode(@$item)}}, event)" type="button" class="close float-none">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </td>
               </tr>
               @endforeach
               <!-- End Item Content -->
-
             </tbody>
           </table>
         </div>
@@ -94,13 +94,12 @@
             </div>
           </div>
           <!-- End Delivery -->
-
           <!-- Total -->
           <div class="col-md-6 col-lg-5 align-self-end">
             <div class="media">
               <div class="mr-4">
-                <h3 id="total_preco" class="h5 mb-0">Total: R$ {{@$valor_total}},00</h3>
-                <p class="small mb-0">Got a discount code? Add it in the next step.</p>
+                <h3 id="total_preco" ref="{{@$valor_total}}" class="h5 mb-0">Total: R$ {{@$valor_total}},00</h3>
+                <p class="small mb-0">Possui um código de cupom? Aplique na próxima etapa.</p>
               </div>
               <div class="media-body">
                 <a class="btn btn-primary transition-3d-hover" href="checkout.html">Checkout</a>
@@ -113,8 +112,79 @@
     </div>
   </div>
   <!-- End Cart Section -->
-  {{-- @include('components.carregaJS') --}}
+  
+  @include('components.carregaJS')
 
+<script type="text/javascript">
+  $(document).on('ready', function() {
 
+    
+  });
+
+  function destroyRow(item, event) {
+    event.preventDefault();
+    var row = '#' + item.id_row; // a row é identificada pelo id_row
+    var total = parseFloat(JSON.parse(document.getElementById('total_preco').getAttribute('ref')));
+    var total_antes = total;
+    var preco_remove = parseFloat(removeChars(item.preco));
+    
+    total -= preco_remove;
+    
+    var total_str = changeChars(total.toString());
+    
+    document.getElementById('total_preco').removeAttribute('ref');
+    document.getElementById('total_preco').setAttribute('ref', total);
+    document.getElementById('total_preco').innerHTML = `Total: R$ ${total_str}`;
+    $(row).remove();
+
+    $.ajax({
+        type: 'GET',
+        url: '{{route("carrinho.atualizar")}}', 
+        data: {item:item, valor_total: total},
+        success: function(result) {
+          if(result.success) {
+            $('#alert-suc').addClass('active');
+            $('#alert-suc').find('.close-alert').click(function(e) {
+              $('#alert-suc').removeClass('active');
+            });
+          }
+        }
+    });
+  }
+
+  function removeChars(str) {
+    var aux = new String;
+    for (let i = 0; i < str.length; i++) {
+      if(str[i] != 'R' && str[i] != '$' && str[i] != ' ') {
+        str[i] == ',' ? aux += '.' : aux += str[i];
+      }
+    }
+
+    return aux;
+  }
+
+  function changeChars(str) {
+    var aux = new String;
+    var hasAfter = false;
+    for (let i = 0; i < str.length; i++) {
+      if(str[i] == '.') {
+        hasAfter = true;
+        aux += ',';
+      }
+      else {
+        aux += str[i];
+        if(i == str.length - 1) {
+          if(!hasAfter) {
+            aux += ',00';
+          }
+        }
+      }
+    }
+
+    return aux;
+  }
+
+</script>
 
 @endsection
+

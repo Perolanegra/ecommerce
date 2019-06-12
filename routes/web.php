@@ -26,6 +26,7 @@ Route::group(['middleware' => 'guest'], function() {
 Route::middleware(['auth'])->group(function () { 
     Route::get('/entrar', 'AppController@index')->name('authenticate');
     Route::get('/cart', 'CarrinhoController@index')->name('carrinho.listar');
+    Route::get('/cart-up', 'CarrinhoController@atualizar')->name('carrinho.atualizar');
     Route::post('/produtos/store', 'ProdutoController@storeProduto')->name('produto.store');
     Route::view('/cadProduto', 'produtos/cadProduto/cadProduto')->name('cadastrar.produto');
 });

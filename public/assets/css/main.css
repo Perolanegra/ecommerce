@@ -41,3 +41,8 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+.search-bar-style {
+	display: flex;
+	margin-top: 3%;
+}

@@ -33,17 +33,17 @@ class ProdutoController extends Controller
         request()->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
+        
         $imageName = time().'.'.request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images'), $imageName);
-
+        request()->image->move(public_path('/assets/img'), $imageName);
+        
         $params = [
             'id_categoria' => $request->get('id'),
             'nome' => $request->get('nome'),
             'descricao' => $request->get('descricao'),
             'foto' => $imageName
         ];
-
+        
         try {
             $response = $this->produtoRepositorio->store($params);
             if($response) {
@@ -57,13 +57,12 @@ class ProdutoController extends Controller
                 $responsePreco = $this->precoProdutoRepositorio->store($paramsPreco);
                 if($responsePreco) {
                     session()->flash('success', 'Produto inserido com sucesso!');
-                    return redirect()->action('HomeController@index');
+                    return redirect()->action('AppController@index');
                 }
             }
-            return redirect()->action('HomeController@index');
+            return redirect()->action('AppController@index');
         } catch (\Throwable $th) {
-            throw new Exception("Erro de Requisição", 1);
-            return redirect()->action('HomeController@index');
+            return redirect()->action('AppController@index');
         }
         
     }

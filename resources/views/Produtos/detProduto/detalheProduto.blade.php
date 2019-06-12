@@ -22,6 +22,8 @@
 
 </head>
 <body>
+    {{-- @include('components.alert-success',['content' => collect(['id' => 'alert-suc','text' => 'Produto adicionado ao carrinho com sucesso!'])]) --}}
+    @include('components.alert-success')
   <!-- ========== MAIN CONTENT ========== -->
   <main id="content" role="main">
     <!-- Hero Section -->
@@ -89,7 +91,6 @@
       </div>
     </div>
     <!-- End Hero Section -->
-
     <hr class="my-0">
 
     <!-- Subscribe Section -->
@@ -346,6 +347,22 @@
 
     $('#addToCart').click(function(e) {
         $('#addToCart').addClass('disabled');
+        $('#alert-suc').addClass('active');
+    });
+
+    $('#alert-suc').find('.close-alert').click(function(e) {
+      $('#alert-suc').removeClass('active');
+      var item = $('#item').val();
+      {{Auth::user() ? session('item1', $item) }}
+      
+      // $.ajax({
+      //   type: 'GET',
+      //   url: '{{route("produto.verify")}}', 
+      //   data: {q:item},
+      //   success: function(result) {
+      //     $(document.body).html(result);
+      //   }
+      // });
     });
 
 

@@ -1,3 +1,43 @@
 .adjust-logo {
     width: 15%;
 }
+
+.alert-body {
+    position: fixed;
+    width: 100%;
+    padding: 15px 20px;
+    min-height: 60px;
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    transition: 600ms;
+}
+
+.alert-body.active {
+    transform: translateY(0%);
+}
+
+.alert-body .alert-text {
+    font-size: 1em;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.alert-body .close-alert {
+    padding: 5px 12px;
+    font-size: 1.1em;
+    color: #222;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.alert-body .close-alert:hover {
+    cursor: pointer;
+    text-decoration: none;
+}

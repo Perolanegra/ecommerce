@@ -85,6 +85,10 @@ class ProdutoController extends Controller
         return view('produtos.detProduto.detalheProduto', compact('item', 'precos'));
     }
 
+    public function verifyAuth() {
+        
+    }
+
     // $to_name = 'TO_NAME';
     // $to_email = 'TO_EMAIL_ADDRESS';
     // $data = array('name'=>"Sam Jose", "body" => "Test mail");

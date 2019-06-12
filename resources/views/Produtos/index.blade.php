@@ -1,16 +1,16 @@
 @extends('index.classic')
 
 @section('content')
-	<form id="search" method="GET">
-		<div class="input-group custom-search-form">
+	<form id="search" method="GET" class="col-md-8 offset-md-1 search-bar-style">
+		<div class="input-group custom-search-form col-md-10">
 			<input id="input-search" type="text" class="form-control" name="search" placeholder="Pesquisar...">
 			<span class="input-group-btn">
 				<button id="searchProd" class="btn btn-default-sm" >
-					<i class="fa fa-search">Buscar
+					<i class="fa fa-search">Buscar</i>
 				</button>
 			</span>
 		</div>
-		<div class="input-group offset-md-8">
+		<div class="input-group col-md-2">
 			<a id="clear" class="btn btn-sm btn-primary transition-3d-hover">
 				Limpar Filtro
 			</a>

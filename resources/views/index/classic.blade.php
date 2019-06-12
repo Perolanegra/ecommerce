@@ -44,7 +44,7 @@
   <!-- ========== END MAIN CONTENT ========== -->
 
   <!-- ========== FOOTER ========== -->
-  <footer class="container">
+  {{-- <footer class="container">
     <div class="row justify-content-lg-between space-2">
       <div class="col-6 col-md-4 col-lg-3 order-lg-2 ml-lg-auto mb-7 mb-lg-0">
         <h3 class="h6 font-weight-semi-bold">Account</h3>
@@ -279,7 +279,7 @@
         <!-- End Links -->
       </div>
     </div>
-  </footer>
+  </footer> --}}
   <!-- ========== END FOOTER ========== -->
   <script>
     $(window).on('load', function () {

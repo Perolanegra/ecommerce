@@ -17,6 +17,7 @@ Route::view('/listaProduto', 'components/listaProduto');
 Route::get('/products', 'ProdutoController@index')->name('produto.listar');
 Route::get('/product-detail', 'ProdutoController@show')->name('produto.detalhe');
 Route::get('/products-search', 'ProdutoController@findProduct')->name('produto.search');
+Route::get('/verify', 'ProdutoController@verifyAuth')->name('produto.verify');
 
 Route::middleware(['auth'])->group(function () { 
     Route::get('/entrar', 'AppController@index')->name('authenticate');

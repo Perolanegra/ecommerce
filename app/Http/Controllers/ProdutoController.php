@@ -16,7 +16,7 @@ class ProdutoController extends Controller
         $this->precoProdutoRepositorio = new Repository\PrecoProduto;
     }
 
-    public function index() {
+    public function index(Request $request) {
         $produtos = $this->produtoRepositorio->getAll();
         return view('produtos.index', compact('produtos'));
     }
@@ -85,8 +85,15 @@ class ProdutoController extends Controller
         return view('produtos.detProduto.detalheProduto', compact('item', 'precos'));
     }
 
-    public function verifyAuth() {
-        
+    public function verifyAuth(Request $request) {
+        $key = 'item'.$request->get('id');
+        if(\Auth::user()) {
+            session([$key => $request->all()]);
+            return [true];
+        }
+        if(\Auth::guest()) {
+            return redirect(route('login'));
+        }
     }
 
     // $to_name = 'TO_NAME';

@@ -81,7 +81,7 @@
             </div>
             <!-- End Size Custom Select -->
 
-            <a id="addToCart" class="btn btn-soft-white transition-3d-hover disabled" href="#">
+            <a id="addToCart" ref="{{json_encode($item)}}" class="btn btn-soft-white transition-3d-hover disabled" href="#">
               <span class="fas fa-cart-arrow-down mr-2"></span>
               Adicionar ao carrinho
             </a>
@@ -346,24 +346,31 @@
     });
 
     $('#addToCart').click(function(e) {
+        let item = JSON.parse(e.currentTarget.getAttribute('ref'));
         $('#addToCart').addClass('disabled');
-        $('#alert-suc').addClass('active');
+        verifyAuth(item);
     });
 
     $('#alert-suc').find('.close-alert').click(function(e) {
       $('#alert-suc').removeClass('active');
-      var item = $('#item').val();
-      {{Auth::user() ? session('item1', $item) }}
-      
-      // $.ajax({
-      //   type: 'GET',
-      //   url: '{{route("produto.verify")}}', 
-      //   data: {q:item},
-      //   success: function(result) {
-      //     $(document.body).html(result);
-      //   }
-      // });
     });
+
+    function verifyAuth(item) {
+      console.log('oks');
+      
+      $.ajax({
+        type: 'GET',
+        url: '{{route("produto.verify")}}', 
+        data: {q:item},
+        success: function(result) {
+          
+          if(result.length !== 0) {
+            $('#alert-suc').addClass('active');
+          }
+          // $(document.body).html(result);
+        }
+      });
+    }
 
 
     });

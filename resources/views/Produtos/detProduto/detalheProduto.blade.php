@@ -71,6 +71,9 @@
                 </a>
               </div>
 
+                  <input type="hidden" id="preco_sm" ref="{{json_encode(@$precos->implode('valor_pequeno'))}}">
+                  <input type="hidden" id="preco_md" ref="{{json_encode(@$precos->implode('valor_medio'))}}">
+                  <input type="hidden" id="preco_lg" ref="{{json_encode(@$precos->implode('valor_grande'))}}">
 
                   <select id="hasValue" name="hasValue" class="custom-select">
                     <option value="0" selected>Selecione</option>
@@ -348,6 +351,7 @@
     $('#addToCart').click(function(e) {
         let item = JSON.parse(e.currentTarget.getAttribute('ref'));
         $('#addToCart').addClass('disabled');
+        // $('#hasValue').addClass('disabled');
         verifyAuth(item);
     });
 
@@ -356,17 +360,39 @@
     });
 
     function verifyAuth(item) {
-      console.log('oks');
+      var tamanho_option = $('#hasValue').val();
+      const opt = parseInt(tamanho_option);
+            
+      switch (opt) {
+        case 1:
+          item.preco = JSON.parse(document.getElementById('preco_sm').getAttribute('ref'));
+          break;
+        
+        case 2:
+          item.preco = JSON.parse(document.getElementById('preco_md').getAttribute('ref'));
+          break;
+
+        case 3: 
+          item.preco = JSON.parse(document.getElementById('preco_lg').getAttribute('ref'))
+          break;
+
+        default:
+          return;
+      }
       
       $.ajax({
         type: 'GET',
         url: '{{route("produto.verify")}}', 
-        data: {q:item},
+        data: {item:item},
         success: function(result) {
-          
-          if(result.length !== 0) {
-            $('#alert-suc').addClass('active');
+          if(!result.success) {
+              window.location = result.rota;
+              return;
           }
+          $('#alert-suc').addClass('active');
+          setTimeout(() => {
+            window.location = result.rota;
+          }, 1000);
           // $(document.body).html(result);
         }
       });

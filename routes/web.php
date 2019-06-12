@@ -19,6 +19,10 @@ Route::get('/product-detail', 'ProdutoController@show')->name('produto.detalhe')
 Route::get('/products-search', 'ProdutoController@findProduct')->name('produto.search');
 Route::get('/verify', 'ProdutoController@verifyAuth')->name('produto.verify');
 
+Route::group(['middleware' => 'guest'], function() {
+    Route::get('unauth-login', 'AppController@guestLogin')->name('guest.login');
+});
+
 Route::middleware(['auth'])->group(function () { 
     Route::get('/entrar', 'AppController@index')->name('authenticate');
     Route::get('/cart', 'CarrinhoController@index')->name('carrinho.listar');

@@ -22,7 +22,7 @@ class ProdutoController extends Controller
     }
     /**
      *
-     * Insere um produto na Entidade Produto. (PERFIL PROPRIETÁRIO)
+     * Insere um produto na Entidade Produto. (PERFIL ADMINISTRADOR)
      *
      * @param    request
      * @return      array
@@ -86,14 +86,22 @@ class ProdutoController extends Controller
     }
 
     public function verifyAuth(Request $request) {
-        $key = 'item'.$request->get('id');
-        if(\Auth::user()) {
-            session([$key => $request->all()]);
-            return [true];
-        }
+        $item = $request->get('item');
+        $key = 'item'.$item['id'];
+        $response = [
+            'success' => false,
+            'rota' => null
+        ];
+        
         if(\Auth::guest()) {
-            return redirect(route('login'));
+            $response['rota'] = route('authenticate');
+            return $response;
         }
+
+        session([$key => $item]);
+        $response['success'] = true;
+        $response['rota'] = route('produto.listar');
+        return $response;
     }
 
     // $to_name = 'TO_NAME';

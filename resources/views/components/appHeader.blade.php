@@ -102,7 +102,7 @@
     
                   <!-- Button -->
                   <li class="nav-item u-header__nav-last-item">
-                  <a class="btn btn-sm btn-primary transition-3d-hover" href="{{route('carrinho.listar')}}" target="_blank">
+                  <a class="btn btn-sm btn-primary transition-3d-hover" href="{{route('carrinho.listar')}}">
                       Meu Carrinho
                     </a>
                   </li>

@@ -79,6 +79,13 @@ class ProdutoController extends Controller
         return view('produtos.index', compact('produtos'));
     }
 
+    public function findProductByCategory(Request $request) {
+        $searchID = $request->get('q');
+        $produtos = $this->produtoRepositorio->getByCategory($searchID);
+       
+        return view('produtos.index', compact('produtos'));
+    }
+
     public function show(Request $request) {
         $item = $request->get('item');
         $precos = $this->precoProdutoRepositorio->getWithId($item['id']);

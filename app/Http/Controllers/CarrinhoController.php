@@ -41,4 +41,25 @@ class CarrinhoController extends Controller
        
         return session()->has($key) ? ['success' => false] : ['success' => true];
     }
+
+    public function checkout(Request $request) {
+        $session = collect(\session()->all());
+        $keys = collect($this->keys);
+        $produtos = [];
+
+        foreach ($keys as $row) {
+            $key = 'item'.$row;
+            if($session->has($key)) {
+                $refProduto[$key] = $session->get($key);
+                $produtos[$key] = $refProduto[$key];
+                $produtos[$key]['preco'] = 'R$ '.$refProduto[$key]['preco'].',00';
+                $produtos[$key]['id_row'] = 'row'.$row;
+            }
+        }
+
+        $produtos = collect($produtos);
+        
+        $valor_total = $request->get('valor_total');
+        return view('carrinho.checkout', compact('valor_total', 'produtos'));
+    }
 }

@@ -80,18 +80,6 @@
                 </div>
               </div>
             </div>
-
-            <div class="card border-0">
-              <div class="card-body p-3">
-                <div class="custom-control custom-radio d-flex align-items-center small text-muted">
-                  <input type="radio" class="custom-control-input" id="deliveryRadio2" name="deliveryRadio">
-                  <label class="custom-control-label ml-1" for="deliveryRadio2">
-                    <span class="d-block h6 text-dark font-weight-normal mb-1"><span class="font-weight-semi-bold">$8,00</span> - Express delivery</span>
-                    <span class="d-block">Entrega em 2-3 dias úteis.</span>
-                  </label>
-                </div>
-              </div>
-            </div>
           </div>
           <!-- End Delivery -->
           <!-- Total -->
@@ -102,7 +90,7 @@
                 <p class="small mb-0">Possui um código de cupom? Aplique na próxima etapa.</p>
               </div>
               <div class="media-body">
-                <a class="btn btn-primary transition-3d-hover" href="checkout.html">Checkout</a>
+                <a id="btn-checkout" class="btn btn-primary transition-3d-hover" href="{{route('carrinho.checkout', ['valor_total' => @$valor_total])}}">Comprar</a>
               </div>
             </div>
           </div>
@@ -150,6 +138,10 @@
           }
         }
     });
+
+    if(total == 0) {
+      $('#btn-checkout').addClass('disabled');
+    }
   }
 
   function removeChars(str) {

@@ -95,9 +95,9 @@
                   <!-- End Pages -->
     
                   <!-- Blog -->
-                  <li class="nav-item u-header__nav-item">
+                  {{-- <li class="nav-item u-header__nav-item">
                         <a class="nav-link u-header__nav-link" href="/categories">Categorias</a>
-                  </li>
+                  </li> --}}
                   <!-- End Blog -->
     
                   <!-- Button -->

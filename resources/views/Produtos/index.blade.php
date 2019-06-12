@@ -16,6 +16,27 @@
 			</a>
 		</div>
 	</form>
+	<div class="col-md-12">
+		<div class="row">
+				<div class="col-md-4 align-content-center">
+						<a class="btn btn-sm btn-primary transition-3d-hover btn-out" data-category="3" href="#">
+							Tradicionais
+						</a>
+				</div>
+		
+				<div class="col-md-4 align-content-center">
+						<a class="btn btn-sm btn-primary transition-3d-hover btn-out" data-category="2" href="#">
+							Especiais
+						</a>
+				</div>
+		
+				<div class="col-md-4 align-content-center">
+						<a class="btn btn-sm btn-primary transition-3d-hover btn-out" data-category="1" href="#">
+							Fitness
+						</a>
+				</div>
+		</div>
+	</div>
 	
 	<div id="shopItemsContent" class="container space-2 space-md-3">
 			<div class="row">
@@ -57,6 +78,18 @@ $(document).ready(function() {
 		$.ajax({
 			type: 'GET',
 			url: '{{route("produto.listar")}}', 
+			success: function(result) {
+				$(document.body).html(result);
+		}});
+	});
+
+	$(".btn-out").click(function(e) {
+		e.preventDefault();
+		var q = parseInt(e.currentTarget.getAttribute('data-category'));
+		$.ajax({
+			type: 'GET',
+			url: '{{route("produto.categoria")}}', 
+			data: {q:q},
 			success: function(result) {
 				$(document.body).html(result);
 		}});

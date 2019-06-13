@@ -21,7 +21,6 @@
             <thead>
               <tr>
                 <th>Produtos</th>
-                <th>Quantidade</th>
                 <th>Preço unitário</th>
                 <th></th>
               </tr>
@@ -33,7 +32,7 @@
                 <td>
                   <div class="media align-items-center">
                     <div class="u-avatar mr-3">
-                      <img class="img-fluid rounded" src="../../assets/img/100x100/img14.jpg" alt="Image Description">
+                      <img class="img-fluid rounded" src="/assets/img/{{@$item['foto']}}" alt="Image Description">
                     </div>
                     <div class="media-body">
                     <h2 class="h6 mb-0">{{@$item['nome']}}</h2>
@@ -43,15 +42,7 @@
                     </div>
                   </div>
                 </td>
-                <td class="align-middle">
-                  <div class="js-quantity input-group u-quantity">
-                    <input class="js-result form-control u-quantity__input" type="text" value="1">
-                    <div class="u-quantity__arrows">
-                      <span class="js-plus u-quantity__arrows-inner fas fa-angle-up"></span>
-                      <span class="js-minus u-quantity__arrows-inner fas fa-angle-down"></span>
-                    </div>
-                  </div>
-                </td>
+                
                 <td class="align-middle">{{@$item['preco']}}</td>
                 <td class="align-middle text-center">
                   <button onclick="destroyRow({{json_encode(@$item)}}, event)" type="button" class="close float-none">
@@ -106,8 +97,8 @@
 <script type="text/javascript">
   $(document).on('ready', function() {
 
-    
   });
+
 
   function destroyRow(item, event) {
     event.preventDefault();

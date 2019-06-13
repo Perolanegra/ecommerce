@@ -24,9 +24,9 @@ class CarrinhoController extends Controller
             if($session->has($key)) {
                 $refProduto[$key] = $session->get($key);
                 $produtos[$key] = $refProduto[$key];
-                $produtos[$key]['preco'] = 'R$ '.$refProduto[$key]['preco'].',00';
+                $produtos[$key]['preco'] = 'R$ '.$refProduto[$key]['preco_real'].',00';
                 $produtos[$key]['id_row'] = 'row'.$row;
-                $valor_total += (float) $refProduto[$key]['preco'];
+                $valor_total += (float) $refProduto[$key]['preco_real'];
             }
         }
 

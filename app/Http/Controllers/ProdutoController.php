@@ -94,6 +94,11 @@ class ProdutoController extends Controller
 
     public function verifyAuth(Request $request) {
         $item = $request->get('item');
+        $qtd = $item['quantidade'];
+        $preco = $item['preco'];
+        $preco_real = (float) $preco * (float) $qtd;
+        
+        $item['preco_real'] = $preco_real;
         $key = 'item'.$item['id'];
         $response = [
             'success' => false,

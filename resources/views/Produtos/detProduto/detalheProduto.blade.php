@@ -54,7 +54,7 @@
           <div class="col-md-5">
             <div class="mb-5">
               <h1 class="text-white font-weight-normal">{{@$item['nome']}}</h1>
-              <span class="d-block h3 text-white mb-3">R$ {{@$precos->implode('valor_pequeno')}},00</span>
+              <span id="valor-default" class="d-block h3 text-white mb-3">R$ {{@$precos->implode('valor_pequeno')}},00</span>
             <p class="text-white">{{@$item['descricao']}}</p>
             </div>
 
@@ -71,9 +71,9 @@
                 </a>
               </div>
 
-                  <input type="hidden" id="preco_sm" ref="{{json_encode(@$precos->implode('valor_pequeno'))}}">
-                  <input type="hidden" id="preco_md" ref="{{json_encode(@$precos->implode('valor_medio'))}}">
-                  <input type="hidden" id="preco_lg" ref="{{json_encode(@$precos->implode('valor_grande'))}}">
+                  <input type="hidden" name="1" id="preco_sm" ref="{{json_encode(@$precos->implode('valor_pequeno'))}}">
+                  <input type="hidden" name="2" id="preco_md" ref="{{json_encode(@$precos->implode('valor_medio'))}}">
+                  <input type="hidden" name="3" id="preco_lg" ref="{{json_encode(@$precos->implode('valor_grande'))}}">
 
                   <select id="hasValue" name="hasValue" class="custom-select">
                     <option value="0" selected>Selecione</option>
@@ -81,6 +81,16 @@
                     <option value="2">Médio - R$ {{@$precos->implode('valor_medio')}},00</option>
                     <option value="3">Grande - R$ {{@$precos->implode('valor_grande')}},00</option>
                   </select>
+
+                  <td class="align-middle">
+                    <div class="js-quantity input-group u-quantity">
+                      <input id="{{@$item['id']}}" class="js-result form-control u-quantity__input input-qtd" type="text" value="1">
+                      <div class="u-quantity__arrows">
+                      <span onclick="addQtd({{json_encode(@$item['id'])}})" class="js-plus u-quantity__arrows-inner fas fa-angle-up"></span>
+                      <span onclick="rmQtd({{json_encode(@$item['id'])}})" class="js-minus u-quantity__arrows-inner fas fa-angle-down"></span>
+                      </div>
+                    </div>
+                  </td>
             </div>
             <!-- End Size Custom Select -->
 
@@ -283,6 +293,42 @@
   @include('components.carregaJS')
 
   <script>
+
+    function addQtd(id) {
+      var input = document.getElementById(JSON.parse(id).toString());
+      var old_value = parseInt(input.value);
+      var new_value = old_value + 1;
+      input.value = new_value;
+      var select_option = $('#hasValue').val();
+
+      if(select_option != '0') {
+        preco_selecionado = JSON.parse(document.getElementsByName(select_option)[0].getAttribute('ref'));
+        result = preco_selecionado * new_value;
+        preco_title = `R$ ${result},00`; // não deu tempo de tratar caso venha float...
+        $('#valor-default').html(preco_title);
+        $('#valor-default').val(result);
+      }
+    }
+
+    function rmQtd(id) {
+      var input = document.getElementById(JSON.parse(id).toString());
+      var old_value = parseInt(input.value);
+      if(old_value > 0) {
+        var new_value = old_value - 1;
+        input.value = new_value;
+
+        var select_option = $('#hasValue').val();
+
+        if(select_option != '0' && new_value > 0) {
+          preco_selecionado = JSON.parse(document.getElementsByName(select_option)[0].getAttribute('ref'));
+          result = preco_selecionado * new_value;
+          preco_title = `R$ ${result},00`; // não deu tempo de tratar caso venha float...
+          $('#valor-default').html(preco_title);
+          $('#valor-default').val(result);
+        }
+      }
+    }
+
     $(window).on('load', function () {
       // initialization of HSMegaMenu component
       $('.js-mega-menu').HSMegaMenu({
@@ -337,21 +383,46 @@
       $.HSCore.components.HSGoTo.init('.js-go-to');
 
     document.querySelector('select#hasValue').addEventListener('change', function(event) {
-        switch ($('[name=hasValue]').val()) {
-            case '0':
-                $('#addToCart').addClass('disabled');
-                break;
+      $('.input-qtd').val(1);
+      var select_option = $('#hasValue').val();
+      const choice = parseInt(select_option);
+            
+      switch ($('[name=hasValue]').val()) {
+          case '0':
+            $('#addToCart').addClass('disabled');
+            break;
 
-            default:
-                $('#addToCart').removeClass('disabled');
-                break;
-        }
+          default:
+            $('#addToCart').removeClass('disabled');
+            break;
+      }
+
+      switch (choice) {
+        case 1:
+          precoDefault = `R$ ${JSON.parse(document.getElementById('preco_sm').getAttribute('ref'))},00`;
+          $('#valor-default').html(precoDefault);
+          break;
+        
+        case 2:
+          precoDefault = `R$ ${JSON.parse(document.getElementById('preco_md').getAttribute('ref'))},00`;
+          $('#valor-default').html(precoDefault);
+          break;
+
+        case 3: 
+          precoDefault = `R$ ${JSON.parse(document.getElementById('preco_lg').getAttribute('ref'))},00`;
+          $('#valor-default').html(precoDefault);
+          break;
+
+        default:
+          break;
+      }
     });
 
     $('#addToCart').click(function(e) {
         let item = JSON.parse(e.currentTarget.getAttribute('ref'));
         $('#addToCart').addClass('disabled');
-        // $('#hasValue').addClass('disabled');
+        $('#hasValue').addClass('disabled');
+        
         verifyAuth(item);
     });
 
@@ -379,12 +450,14 @@
         default:
           return;
       }
+      item.quantidade = $('.input-qtd').val();
       
       $.ajax({
         type: 'GET',
         url: '{{route("produto.verify")}}', 
         data: {item:item},
         success: function(result) {
+          
           if(!result.success) {
               window.location = result.rota;
               return;
@@ -397,6 +470,8 @@
         }
       });
     }
+
+    
 
 
     });

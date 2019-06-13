@@ -21,7 +21,7 @@
             <thead>
               <tr>
                 <th>Produtos</th>
-                <th>Preço unitário</th>
+                <th>Preço (Pedido)</th>
                 <th></th>
               </tr>
             </thead>

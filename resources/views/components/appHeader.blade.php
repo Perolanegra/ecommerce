@@ -55,13 +55,16 @@
             </div>
           </div>
           <!-- End Topbar -->
+          
     
           <div id="logoAndNav" class="container">
             <!-- Nav -->
             <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
+                
+
               <!-- Logo -->
             <a class="navbar-brand u-header__navbar-brand u-header__navbar-brand-center" href="{{url('/')}}" aria-label="Front">
-                {{-- <img src="/assets/img/logo-transparent.jpg" class="adjust-logo"/> --}}
+                
                 <span class="u-header__navbar-brand-text">Cuscuz</span>
               </a>
               <!-- End Logo -->
@@ -78,7 +81,7 @@
                 </span>
               </button>
               <!-- End Responsive Toggle Button -->
-    
+              <img src="/assets/img/logo-transparent.jpg" class="adjust-logo"/>
               <!-- Navigation -->
               <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse">
                 <ul class="navbar-nav u-header__navbar-nav">

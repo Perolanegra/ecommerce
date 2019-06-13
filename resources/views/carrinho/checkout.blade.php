@@ -23,7 +23,7 @@
                 @foreach ($produtos as $item)
                 <div class="media align-items-center mb-5">
                   <div class="u-avatar position-relative mr-3">
-                    <img class="img-fluid rounded" src="../../assets/img/100x100/img14.jpg" alt="Image Description">
+                    <img class="img-fluid rounded" src="/assets/img/{{@$item['foto']}}" alt="Image Description">
                     <span class="badge badge-sm badge-primary badge-pos rounded-circle">1</span>
                   </div>
                   <div class="media-body">
@@ -31,7 +31,7 @@
                     <small class="d-block text-secondary">{{@$item['id_categoria'] == 1 ? "Fitness" : (@$item['id_categoria'] == 2 ? "Especial" : "Tradicional" )}}</small>
                   </div>
                   <div class="media-body text-right">
-                  <span>{{@$item['preco']}}</span>
+                  <span>R$ {{@$item['preco_real']}},00</span>
                   </div>
                 </div>
                 @endforeach
@@ -74,10 +74,16 @@
                 <!-- Total -->
                 <div class="media align-items-center">
                   <h3 class="h6 text-secondary mr-3">Total</h3>
-                  <div class="media-body text-right">
+                  <div class="media-body text-right" style="text-align: center !important;">
                     <span class="font-weight-semi-bold">R$ {{@$valor_total + 5}},00</span>
                   </div>
+                  <a id="btn-checkout" class="btn btn-primary transition-3d-hover" href="#">Comprar</a>
                 </div>
+                {{-- <div class="offset-md-10">
+                  <div class="media-body">
+                    
+                  </div>
+                </div> --}}
                 <!-- End Total -->
               </div>
             </div>

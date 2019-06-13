@@ -108,66 +108,6 @@
 
     <!-- Subscribe Section -->
     <div id="SVGsubscribe" class="svg-preloader overflow-hidden">
-      <div class="position-relative gradient-half-primary-v1 overflow-hidden space-top-2 space-bottom-3 space-top-md-3 space-bottom-md-4">
-        <div class="container">
-          <div class="row justify-content-md-center">
-            <div class="col-md-9 col-lg-7 col-xl-6 offset-xl-2">
-              <!-- Title -->
-              <div class="text-center mb-4">
-                <span class="btn btn-xs btn-soft-white btn-pill mb-2">Subscribe</span>
-                <h2 class="h1 text-white"><span class="font-weight-semi-bold">Stay</span> in the know</h2>
-                <p class="lead text-white-70">Get special offers on the latest developments from Front.</p>
-              </div>
-              <!-- End Title -->
-
-              <!-- Subscribe Form -->
-              <form class="js-validate js-form-message">
-                <label class="sr-only" for="subscribeSrEmail">Enter your email address</label>
-                <div class="input-group input-group-lg input-group-borderless">
-                  <input type="email" class="form-control" name="email" id="subscribeSrEmail" placeholder="Enter your email address" aria-label="Enter your email address" aria-describedby="subscribeButton" required
-                         data-msg="Please enter a valid email address.">
-                  <div class="input-group-append">
-                    <button type="button" class="btn btn-warning btn-wide" id="subscribeButton">Join Front</button>
-                  </div>
-                </div>
-              </form>
-              <!-- End Subscribe Form -->
-
-              <!-- Info -->
-              <div class="d-block d-xl-none">
-                <small class="form-text text-white-70 mb-0">Be the lucky user to earn <span class="text-white font-weight-semi-bold">$1000</span> bonus now!</small>
-              </div>
-              <!-- End Info -->
-            </div>
-
-            <div class="col-xl-2 d-none d-xl-inline-block mt-auto mb-7">
-              <div class="position-relative p-3">
-                <p class="small text-white-70 mb-0">Be the lucky user to earn <span class="text-white font-weight-semi-bold">$1000</span> bonus now!</p>
-
-                <!-- SVG Shape -->
-                <figure class="position-absolute top-0 right-0 left-0">
-                  <img class="js-svg-injector" src="../../assets/svg/components/comment.svg" alt="Image Description"
-                       data-parent="#SVGsubscribe">
-                </figure>
-                <!-- End SVG Shape -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SVG Phone Mockup -->
-        <div class="d-none d-lg-block u-devices-v2__phone u-devices-v2__phone--left-position">
-          <figure class="w-75 u-devices-v2__phone-svg ie-devices-v2-iphone">
-            <img class="js-svg-injector" src="../../assets/svg/components/iphone.svg" alt="Image Description"
-                 data-img-paths='[
-                   {"targetId": "#SVGiphoneImg1", "newPath": "../../assets/img/282x500/img3.jpg"}
-                 ]'
-                 data-parent="#SVGsubscribe">
-          </figure>
-        </div>
-        <!-- End SVG Phone Mockup -->
-      </div>
-
       <!-- SVG Background -->
       <figure class="position-absolute right-0 bottom-0 left-0 z-index-2">
         <img class="js-svg-injector" src="../../assets/svg/components/wave-1-bottom-sm.svg" alt="Image Description"

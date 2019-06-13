@@ -5,7 +5,7 @@
 <div class="position-relative gradient-half-warning-v3 overflow-hidden">
         <!-- Item Image -->
         <div class="col-md-6 position-md-absolute top-md-0 left-md-0 content-centered-y--md pl-0 mb-3 mb-md-0">
-          <img class="img-fluid" src="../../assets/img/mockups/img5.png" alt="Image Description">
+          <img class="img-fluid" src="/assets/img/banner-arabe.png" alt="Image Description">
         </div>
         <!-- End Item Image -->
   
@@ -14,13 +14,13 @@
           <div class="row justify-content-md-end">
             <div class="col-md-6">
               <div class="mb-5">
-                <span class="d-block lead text-white mb-2">Low price T-shirts for daily use.</span>
-                <h1 class="display-4 font-size-md-down-5 text-white font-weight-semi-bold">Marvelous gifts from Front.</h1>
+                <span class="d-block lead text-white mb-2">Novidades, promoções e muito mais.</span>
+                <h1 class="display-4 font-size-md-down-5 text-white font-weight-semi-bold">O Cuscuz ideal para presentear seu amor!</h1>
               </div>
-              <a class="js-go-to btn text-primary btn-white transition-3d-hover" href="#"
+              <a class="js-go-to btn text-primary btn-white transition-3d-hover" href="#shopItemsContent"
                  data-target="#shopItemsContent"
                  data-type="static">
-                Start Shopping
+                Quero agora!
               </a>
             </div>
           </div>

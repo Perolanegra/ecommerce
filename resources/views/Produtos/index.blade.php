@@ -44,7 +44,7 @@
 		<div class="col-sm-6 col-lg-4 mb-5">
 		<!-- Shop Item -->
 		<a class="d-block card card-text-dark border-0 text-center transition-3d-hover" href={{route('produto.detalhe', ['item' => $item])}}>
-			<img class="img-fluid rounded" src="/assets/img/{{$item->foto}}" alt="Image Description">
+			<img class="img-fluid rounded" src="/assets/img/{{$item->foto}}" alt="siri catado">
 			<div class="card-body pt-4 px-4">
 			<h2 class="h5 mb-1">{{$item->nome}}</h2>
 			<span class="d-block">{{$item->descricao}}</span>

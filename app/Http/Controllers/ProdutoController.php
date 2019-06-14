@@ -36,32 +36,33 @@ class ProdutoController extends Controller
         
         $imageName = time().'.'.request()->image->getClientOriginalExtension();
         request()->image->move(public_path('/assets/img'), $imageName);
-        
+
         $params = [
-            'id_categoria' => $request->get('id'),
+            'id_categoria' => (int) $request->get('id_categoria'),
             'nome' => $request->get('nome'),
             'descricao' => $request->get('descricao'),
             'foto' => $imageName
         ];
         
         try {
-            $response = $this->produtoRepositorio->store($params);
-            if($response) {
+            $responseID = $this->produtoRepositorio->store($params);
+            if($responseID) {
                 $paramsPreco = [
-                    'id_produto' => $response,
+                    'id_produto' => $responseID,
                     'valor_pequeno' => $request->get('valor_pequeno'),
                     'valor_medio' => $request->get('valor_medio'),
                     'valor_grande' => $request->get('valor_grande')
                 ];
 
-                $responsePreco = $this->precoProdutoRepositorio->store($paramsPreco);
-                if($responsePreco) {
+                $responsePrecoID = $this->precoProdutoRepositorio->store($paramsPreco);
+                if($responsePrecoID) {
                     session()->flash('success', 'Produto inserido com sucesso!');
                     return redirect()->action('AppController@index');
                 }
             }
             return redirect()->action('AppController@index');
         } catch (\Throwable $th) {
+            // dd($th);
             return redirect()->action('AppController@index');
         }
         

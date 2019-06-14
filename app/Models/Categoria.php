@@ -11,4 +11,5 @@ class Categoria extends Model
     public function obterCategorias() {
         return \DB::table($this->table)->get();
     }
+
 }

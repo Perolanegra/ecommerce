@@ -15,7 +15,7 @@ class CreateUsuarioTable extends Migration
     {
         Schema::create('usuario', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->integer('id_nivel')->unique()->default(3);
+            $table->integer('id_nivel')->default(3);
             $table->string('nome');
             $table->string('CPF')->unique()->nullable();
             $table->string('telefone')->unique()->nullable();

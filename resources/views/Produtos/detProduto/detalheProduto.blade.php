@@ -103,11 +103,8 @@
         </div>
       </div>
     </div>
-    <!-- End Hero Section -->
-    <hr class="my-0">
-
-    <!-- Subscribe Section -->
-    <div id="SVGsubscribe" class="svg-preloader overflow-hidden">
+    
+    <div style="margin-top:50px;" id="SVGsubscribe" class="svg-preloader overflow-hidden">
       <!-- SVG Background -->
       <figure class="position-absolute right-0 bottom-0 left-0 z-index-2">
         <img class="js-svg-injector" src="../../assets/svg/components/wave-1-bottom-sm.svg" alt="Image Description"
@@ -403,9 +400,7 @@
               return;
           }
           $('#alert-suc').addClass('active');
-          setTimeout(() => {
             window.location = result.rota;
-          }, 1000);
           // $(document.body).html(result);
         }
       });

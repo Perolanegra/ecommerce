@@ -26,10 +26,13 @@
                     <span class="text-danger">*</span>
                   </label>
 
-                  <input type="text" class="form-control" name="id_categoria" placeholder="Categoria do Produto" aria-label="Categoria do Produto" required
-                         data-msg="Insira a categoria do produto"
-                         data-error-class="u-has-error"
-                         data-success-class="u-has-success">
+                  <select id="id_categoria" name="id_categoria" class="custom-select" aria-label="Categoria do Produto" 
+                  required data-error-class="u-has-error" data-success-class="u-has-success"> <!--form-control-->
+                    <option value="0" selected>Selecione categoria</option>
+                    <option value="3">Tradicional</option>
+                    <option value="2">Especial</option>
+                    <option value="1">Fitness</option>
+                  </select>
                 </div>
                 <!-- End Input -->
               </div>
@@ -91,10 +94,11 @@
                 <!-- Input -->
                 <div class="js-form-message mb-6">
                   <label class="form-label" for="valor_pequeno">
-                    Preço Pequeno:
+                    Preço Pequeno <strong>(R$)</strong>:
+                    <span class="text-danger">*</span>
                   </label>
 
-                  <input type="number" class="form-control" placeholder="Preço do produto pequeno" aria-label="Preço do produto pequeno" required
+                  <input id="price_sm" type="number" class="form-control" placeholder="Preço do produto pequeno" aria-label="Preço do produto pequeno" required
                          name="valor_pequeno"
                          data-msg="Insira um preço válido."
                          data-error-class="u-has-error"
@@ -107,11 +111,11 @@
                 <!-- Input -->
                 <div class="js-form-message mb-6">
                   <label class="form-label" for="valor_medio">
-                    Preço Médio:
+                    Preço Médio <strong>(R$)</strong>:
                     <span class="text-danger">*</span>
                   </label>
                   
-                  <input type="number" class="form-control" name="valor_medio" placeholder="Preço do produto médio" aria-label="Preço do produto médio" required
+                  <input id="price_md" type="number" class="form-control" name="valor_medio" placeholder="Preço do produto médio" aria-label="Preço do produto médio" required
                          data-msg="Insira um preço válido."
                          data-error-class="u-has-error"
                          data-success-class="u-has-success">
@@ -123,11 +127,11 @@
                     <!-- Input -->
                     <div class="js-form-message mb-6">
                       <label class="form-label" for="valor_grande">
-                            Preço Grande:
+                            Preço Grande <strong>(R$)</strong>:
                         <span class="text-danger">*</span>
                       </label>
                       
-                      <input type="number" class="form-control" name="valor_grande" placeholder="Preço do produto grande" aria-label="Preço do produto grande" required
+                      <input id="price_lg" type="number" class="form-control" name="valor_grande" placeholder="Preço do produto grande" aria-label="Preço do produto grande" required
                              data-msg="Insira um preço válido."
                              data-error-class="u-has-error"
                              data-success-class="u-has-success">
@@ -152,6 +156,7 @@
 
   <!-- JS Plugins Init. -->
   <script>
+ 
     $(window).on('load', function () {
       // initialization of HSMegaMenu component
       $('.js-mega-menu').HSMegaMenu({
@@ -200,5 +205,6 @@
       // initialization of go to
       $.HSCore.components.HSGoTo.init('.js-go-to');
     });
+
   </script>
 @endsection
